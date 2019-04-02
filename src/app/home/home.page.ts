@@ -1,4 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ModalPage } from '../modal/modal.page';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,18 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 })
 export class HomePage {
   @ViewChild('canvas') canvas: ElementRef;
-  @ViewChild('content') content: ElementRef;
   
-  ngOnInit() {
-    console.log(this.canvas, this.content);
+  constructor(private modalCtrl: ModalController) {}
+  
+  ionViewDidEnter() {
+    console.log(this.canvas.nativeElement.getBoundingClientRect());
+  }
+  
+  async showModal() {
+    const modal = await this.modalCtrl.create({
+      component: ModalPage
+    });
+    
+    await modal.present();
   }
 }

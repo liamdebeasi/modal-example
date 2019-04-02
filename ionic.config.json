@@ -1,5 +1,7 @@
 {
   "name": "canvas",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
