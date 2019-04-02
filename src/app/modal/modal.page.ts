@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal',
@@ -8,10 +9,16 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 export class ModalPage {
   @ViewChild('canvas') canvas: ElementRef;
   
-  constructor() { }
+  constructor(
+    private modalCtrl: ModalController
+  ) { }
 
   ionViewDidEnter() {
     console.log(this.canvas.nativeElement.getBoundingClientRect());
+  }
+  
+  dismiss() {
+    this.modalCtrl.dismiss();
   }
 
 }
